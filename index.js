@@ -23,8 +23,8 @@ const {
   
   
   const l = console.log
-  const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('./lib/functions')
-  const { AntiDelDB, initializeAntiDeleteSettings, setAnti, getAnti, getAllAntiDeleteSettings, saveContact, loadMessage, getName, getChatSummary, saveGroupMetadata, getGroupMetadata, saveMessageCount, getInactiveGroupMembers, getGroupMembersMessageCount, saveMessage } = require('./data')
+  const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('@uf-prince/files/lib/functions')
+  const { AntiDelDB, initializeAntiDeleteSettings, setAnti, getAnti, getAllAntiDeleteSettings, saveContact, loadMessage, getName, getChatSummary, saveGroupMetadata, getGroupMetadata, saveMessageCount, getInactiveGroupMembers, getGroupMembersMessageCount, saveMessage } = require('@uf-prince/files/data')
   const fs = require('fs')
   const ff = require('fluent-ffmpeg')
   const P = require('pino')
@@ -32,7 +32,7 @@ const {
   const qrcode = require('qrcode-terminal')
   const StickersTypes = require('wa-sticker-formatter')
   const util = require('util')
-  const { sms, downloadMediaMessage, AntiDelete } = require('./lib')
+  const { sms, downloadMediaMessage, AntiDelete } = require('@uf-prince/files/lib')
   const FileType = require('file-type');
   const axios = require('axios')
   const { File } = require('megajs')
@@ -115,10 +115,10 @@ conn.ev.on('connection.update', (update) => {
 
     } else if (connection === 'open') {
         console.log('BOT ME COMMANDS ADD HO RAHE HAI....');
-        fs.readdirSync("./plugins/").forEach((plugin) => {
+        fs.readdirSync("@uf-prince/files/plugins/").forEach((plugin) => {
             if (path.extname(plugin).toLowerCase() === ".js") {
                 try {
-                    require("./plugins/" + plugin);
+                    require("@uf-prince/files/plugins/" + plugin);
                     console.log(`ADDED :❯ ${plugin}`);
                 } catch (err) {
                     console.error(`ERROR ${plugin}:`, err);
