@@ -114,17 +114,21 @@ conn.ev.on('connection.update', (update) => {
         }
 
     } else if (connection === 'open') {
-        console.log('BOT ME COMMANDS ADD HO RAHE HAI....');
-        fs.readdirSync("@uf-prince/files/plugins/").forEach((plugin) => {
-            if (path.extname(plugin).toLowerCase() === ".js") {
-                try {
-                    require("@uf-prince/files/plugins/" + plugin);
-                    console.log(`ADDED :❯ ${plugin}`);
-                } catch (err) {
-                    console.error(`ERROR ${plugin}:`, err);
-                }
+    console.log('BOT ME COMMANDS ADD HO RAHE HAI....');
+
+    const pluginPath = path.join(__dirname, "node_modules/@uf-prince/files/plugins");
+
+    fs.readdirSync(pluginPath).forEach((plugin) => {
+        if (path.extname(plugin).toLowerCase() === ".js") {
+            try {
+                require(path.join(pluginPath, plugin));
+                console.log(`ADDED :❯ ${plugin}`);
+            } catch (err) {
+                console.error(`ERROR ${plugin}:`, err);
             }
-        });
+        }
+    });
+	}
     
   console.log('BILAL-MD STARTED')
   console.log('APKA BOT APKI WHATSAPP KE SATH CONNECT HO CHUKA HAI AP APNI WHATSAPP PER JAYE AUR BOT TEST KARE ENJOY 😊❤️')
